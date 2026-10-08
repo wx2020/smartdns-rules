@@ -1,0 +1,21 @@
+{
+  "prev_manifest_url": "https://raw.githubusercontent.com/wx2020/smartdns-rules/data/manifest.json",
+  "ratio_guard": 0.5,
+  "jobs": [
+    {
+      "name": "cn",
+      "min_lines": 10000,
+      "sources": [
+        "https://raw.githubusercontent.com/flyzstu/sing-box-rules/rule-set-geosite/geosite-cn.json",
+        "https://raw.githubusercontent.com/flyzstu/sing-box-rules/rule-set-geosite/geosite-tld-cn.json"
+      ]
+    },
+    {
+      "name": "not-cn",
+      "min_lines": 5000,
+      "sources": [
+        "https://raw.githubusercontent.com/flyzstu/sing-box-rules/rule-set-geosite/geosite-geolocation-!cn.json"
+      ]
+    }
+  ]
+}

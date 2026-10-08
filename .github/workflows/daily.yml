@@ -1,0 +1,63 @@
+name: build-smartdns-rules
+
+on:
+  schedule:
+    # UTC 19:20 == Asia/Shanghai 03:20 (next day)
+    - cron: '20 19 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: build-smartdns-rules
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Convert
+        run: python convert.py --out-dir dist --sources sources.json
+
+      - name: Show manifest
+        run: cat dist/manifest.json
+
+      - name: Publish to data branch
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: data
+          publish_dir: ./dist
+          force_orphan: true
+          enable_jekyll: false
+
+      - name: Compute tag
+        id: tag
+        run: |
+          base="data-$(date -u +%Y%m%d)"
+          if git ls-remote --tags origin "refs/tags/${base}" | grep -q "refs/tags/${base}$"; then
+            base="${base}-$(date -u +%H%M%S)"
+          fi
+          echo "tag=${base}" >> "$GITHUB_OUTPUT"
+
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.tag.outputs.tag }}
+          name: ${{ steps.tag.outputs.tag }}
+          make_latest: true
+          files: |
+            dist/cn.lst
+            dist/cn.lst.sha256
+            dist/not-cn.lst
+            dist/not-cn.lst.sha256
+            dist/manifest.json
