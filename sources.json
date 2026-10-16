@@ -16,6 +16,13 @@
       "sources": [
         "https://raw.githubusercontent.com/flyzstu/sing-box-rules/rule-set-geosite/geosite-geolocation-!cn.json"
       ]
+    },
+    {
+      "name": "geosite-category-ads-all",
+      "min_lines": 50000,
+      "sources": [
+        "https://raw.githubusercontent.com/flyzstu/sing-box-rules/rule-set-geosite/geosite-category-ads-all.json"
+      ]
     }
   ]
 }

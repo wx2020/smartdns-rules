@@ -60,4 +60,6 @@ jobs:
             dist/cn.lst.sha256
             dist/not-cn.lst
             dist/not-cn.lst.sha256
+            dist/geosite-category-ads-all.lst
+            dist/geosite-category-ads-all.lst.sha256
             dist/manifest.json
