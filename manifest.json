@@ -1,0 +1,30 @@
+{
+  "generated_at_utc": "2026-11-14T00:21:31Z",
+  "jobs": {
+    "cn": {
+      "count": 110141,
+      "sha256": "ff8dba4d497aa99b88ee28a8c215e01676ea35ec511bd90ff8fd092cda66fd99",
+      "regex_count": 8,
+      "sources": [
+        "https://raw.githubusercontent.com/flyzstu/sing-box-rules/rule-set-geosite/geosite-cn.json",
+        "https://raw.githubusercontent.com/flyzstu/sing-box-rules/rule-set-geosite/geosite-tld-cn.json"
+      ]
+    },
+    "not-cn": {
+      "count": 27349,
+      "sha256": "d896f6f80b70387128257b60ab25f6c244013d31b3309a778e3d36bec7b76d88",
+      "regex_count": 151,
+      "sources": [
+        "https://raw.githubusercontent.com/flyzstu/sing-box-rules/rule-set-geosite/geosite-geolocation-!cn.json"
+      ]
+    },
+    "geosite-category-ads-all": {
+      "count": 199928,
+      "sha256": "999600d2f4588bdf9be78f35df8ffe832ab2f2ced354267ca23be315d3fc405b",
+      "regex_count": 0,
+      "sources": [
+        "https://raw.githubusercontent.com/flyzstu/sing-box-rules/rule-set-geosite/geosite-category-ads-all.json"
+      ]
+    }
+  }
+}
