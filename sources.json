@@ -3,6 +3,13 @@
   "ratio_guard": 0.5,
   "jobs": [
     {
+      "name": "apple",
+      "min_lines": 500,
+      "sources": [
+        "https://raw.githubusercontent.com/flyzstu/sing-box-rules/rule-set-geosite/geosite-apple.json"
+      ]
+    },
+    {
       "name": "cn",
       "min_lines": 10000,
       "sources": [
