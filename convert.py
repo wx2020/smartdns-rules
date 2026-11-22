@@ -30,6 +30,39 @@ from pathlib import Path
 ALLOWED = re.compile(r"^[a-z0-9]([a-z0-9\-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9\-]*[a-z0-9])?)*$")
 BAD_CHARS = set("*()^$[]?\\+|, \t/\"'<>@#&=%!")
 
+# Google Play download/heartbeat domains: upstream geosite-cn wrongly classifies
+# these as domestic, so smartdns resolves them via the domestic group to stale
+# mainland Google CDN IPs (203.208.x / 120.253.x) that no longer serve Play APKs,
+# and sing-box then routes them direct via geoip-cn. Force them overseas: remove
+# from cn, add to not-cn (which suppresses AAAA and lets the default overseas
+# DoT group resolve real Google IPs -> proxy).
+GOOGLE_PLAY_OVERRIDE = {
+    "dl.google.com",
+    "dl.l.google.com",
+    "redirector.gvt1.com",
+    "redirector.c.play.google.com",
+    "redirector.gcpcdn.gvt1.com",
+    "redirector.offline-maps.gvt1.com",
+    "redirector.snap.gvt1.com",
+    "clientservices.googleapis.com",
+    "checkin.gstatic.com",
+    "connectivitycheck.gstatic.com",
+    "csi.gstatic.com",
+    "cache.pack.google.com",
+    "cache-management-prod.google.com",
+    "fontfiles.googleapis.com",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com",
+    "g0.gstatic.com",
+    "g1.gstatic.com",
+    "g2.gstatic.com",
+    "g3.gstatic.com",
+    "ssl.gstatic.com",
+    "www.gstatic.com",
+    "tac.googleapis.com",
+    "update.googleapis.com",
+}
+
 
 def fetch(url: str) -> bytes:
     req = urllib.request.Request(url, headers={"User-Agent": "smartdns-rules/1.0"})
@@ -109,6 +142,19 @@ def main() -> None:
             n0 = len(domains)
             collect(url, domains, regexes)
             print(f"[{name}] {url} -> +{len(domains) - n0} domains")
+
+        # Google Play override: keep these domains off the domestic list and on
+        # the overseas list so they resolve via the proxy-backed DoT group.
+        if name == "cn":
+            removed = domains & GOOGLE_PLAY_OVERRIDE
+            if removed:
+                domains -= removed
+                print(f"[cn] override: removed {len(removed)} Google Play domains")
+        elif name == "not-cn":
+            added = GOOGLE_PLAY_OVERRIDE - domains
+            if added:
+                domains |= GOOGLE_PLAY_OVERRIDE
+                print(f"[not-cn] override: added {len(added)} Google Play domains")
 
         lines = sorted(domains)
         count = len(lines)
