@@ -12,7 +12,6 @@
 |---|---|
 | `cn.lst` | 国内域名（来自 `geosite-cn` + `geosite-tld-cn`），一行一域名 |
 | `not-cn.lst` | 非国内域名（来自 `geosite-geolocation-!cn`） |
-| `google-cn.lst` | 可被中国大陆直连的 Google 服务域名（来自 `geosite-google-cn`，112 个）；供 smartdns nftset 打标 → 绕过 sing-box TUN 直连 |
 | `geosite-category-ads-all.lst` | 全网广告拦截域名（来自 `geosite-category-ads-all`） |
 | `regex-*.txt` | 源里的 `domain_regex`（仅归档；smartdns 不支持正则域匹配，未纳入 `.lst`） |
 | `manifest.json` | 行数、sha256、来源、构建时间 |
@@ -23,7 +22,6 @@
 - 分支（滚动）：
   - `https://raw.githubusercontent.com/wx2020/smartdns-rules/data/cn.lst`
   - `https://raw.githubusercontent.com/wx2020/smartdns-rules/data/not-cn.lst`
-  - `https://raw.githubusercontent.com/wx2020/smartdns-rules/data/google-cn.lst`
   - `https://raw.githubusercontent.com/wx2020/smartdns-rules/data/geosite-category-ads-all.lst`
 - Release（最新）：
   - `https://github.com/wx2020/smartdns-rules/releases/latest/download/cn.lst`
