@@ -40,10 +40,6 @@ GOOGLE_PLAY_OVERRIDE = {
     "dl.google.com",
     "dl.l.google.com",
     "redirector.gvt1.com",
-    # ångströ (xn--ngstr-lra8j.com) mainland CDN redirector: upstream geosite-cn
-    # classifies it domestic -> domestic DNS resolves to dead mainland CDN IPs
-    # (120.253.x / 203.208.x) that no longer serve Play downloads (all HTTP 000).
-    "redirector.xn--ngstr-lra8j.com",
     "redirector.c.play.google.com",
     "redirector.gcpcdn.gvt1.com",
     "redirector.offline-maps.gvt1.com",
