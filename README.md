@@ -33,9 +33,10 @@
   统一作为 smartdns 后缀匹配行（smartdns 采用域名后缀匹配）。
 - **Google Play 覆盖表（`GOOGLE_PLAY_OVERRIDE` in `convert.py`）**：上游 geosite-cn
   误把一批 Google Play 下载/心跳域名（`dl.google.com`、`redirector.gvt1.com`、
-  `clientservices.googleapis.com`、`checkin.gstatic.com` 等 24 个）归为国内，
+  `clientservices.googleapis.com`、`checkin.gstatic.com`、ångströ 国内 CDN 的
+  `redirector.xn--ngstr-lra8j.com` 等 25 个）归为国内，
   导致 smartdns 用国内组解析出早已失效的大陆 Google CDN IP，sing-box 再按
-  `geoip-cn` 直连，Play 应用下载失败。生成时强制把这 24 个域名从 `cn` 移除、
+  `geoip-cn` 直连，Play 应用下载失败。生成时强制把这 25 个域名从 `cn` 移除、
   加入 `not-cn`（抑制 AAAA，落默认境外 DoT 组 → 真实 Google IP → 代理），
   相当于「放弃国内 CDN、全走代理」。
 - 归一化：小写、去空白、丢弃含 `*()^$[]?\+|` 等非法字符的条目；保留 punycode。
