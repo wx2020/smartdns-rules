@@ -10,6 +10,13 @@
       ]
     },
     {
+      "name": "google-cn",
+      "min_lines": 50,
+      "sources": [
+        "https://raw.githubusercontent.com/flyzstu/sing-box-rules/rule-set-geosite/geosite-google-cn.json"
+      ]
+    },
+    {
       "name": "cn",
       "min_lines": 10000,
       "sources": [
