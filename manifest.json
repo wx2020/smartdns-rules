@@ -1,0 +1,54 @@
+{
+  "generated_at_utc": "2026-11-28T02:01:28Z",
+  "jobs": {
+    "apple": {
+      "count": 1665,
+      "sha256": "1d6ac6485f4cbac994b3471b636e7ffeea31a9e8a1afd71b35e5b47c2e4f983a",
+      "regex_count": 0,
+      "sources": [
+        "https://raw.githubusercontent.com/flyzstu/sing-box-rules/rule-set-geosite/geosite-apple.json"
+      ]
+    },
+    "google-cn": {
+      "count": 112,
+      "sha256": "e2cb31ff396cde4ffc0634043432282f2037ab09035d329cc88e3d7bd218f6cc",
+      "regex_count": 0,
+      "sources": [
+        "https://raw.githubusercontent.com/flyzstu/sing-box-rules/rule-set-geosite/geosite-google-cn.json"
+      ]
+    },
+    "cn": {
+      "count": 110202,
+      "sha256": "ff9599f6a8a4588e00751fcdba920989d4c0ba228166e5e18a93adba80ebdaec",
+      "regex_count": 8,
+      "sources": [
+        "https://raw.githubusercontent.com/flyzstu/sing-box-rules/rule-set-geosite/geosite-cn.json",
+        "https://raw.githubusercontent.com/flyzstu/sing-box-rules/rule-set-geosite/geosite-tld-cn.json"
+      ]
+    },
+    "not-cn": {
+      "count": 27286,
+      "sha256": "6f69173581f1d002cd3a27f086482c03d3125cb3719add81a1174b799c3a1783",
+      "regex_count": 151,
+      "sources": [
+        "https://raw.githubusercontent.com/flyzstu/sing-box-rules/rule-set-geosite/geosite-geolocation-!cn.json"
+      ]
+    },
+    "geosite-category-ads-all": {
+      "count": 204388,
+      "sha256": "6ab89dbedf8cd3f31234f73fec4fdc550fcb15a8e1bc340db266204f4b74bea7",
+      "regex_count": 0,
+      "sources": [
+        "https://raw.githubusercontent.com/flyzstu/sing-box-rules/rule-set-geosite/geosite-category-ads-all.json"
+      ]
+    },
+    "anthropic": {
+      "count": 21,
+      "sha256": "05d19276ee56bd246c753794bb19efddc83171b4e945bdaf70042191ffccdcaa",
+      "regex_count": 0,
+      "sources": [
+        "https://raw.githubusercontent.com/flyzstu/sing-box-rules/rule-set-geosite/geosite-anthropic.json"
+      ]
+    }
+  }
+}
